@@ -27,14 +27,16 @@ const db=mysql.createConnection({
   }) */
   const db=mysql.createConnection({
     host:"sql11.freemysqlhosting.net",
-    user:"sql11644520",
-    password:"JRgbfIDZQN",
-    database:"sql11644520",
+    user:"sql11665997",
+    password:"DryhiQVTsY",
+    database:"sql11665997",
     /*connectionLimit: 50,
       queueLimit: 0,
       waitForConnection: true*/
     //charset : 'utf8mb4_unicode_ci',
   })
+  
+  app.use("/images", express.static(path.join(__dirname, "public/images")));
 
 
   var del = db._protocol._delegateError;
@@ -52,6 +54,9 @@ const postLesson= require('./routes/post-lesson')
 app.use('/membersdata',postLesson)
 
 
-app.listen(8000,()=>{
+
+
+const PORT=process.env.PORT || 9000
+app.listen(PORT,()=>{
     console.log('welcom-back')
 })
