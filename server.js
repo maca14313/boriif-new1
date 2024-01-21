@@ -47,7 +47,9 @@ db._protocol._delegateError = function(err, sequence){
   return del.call(this, err, sequence);
 };
 
-
+app.get("/",(req,res)=>{
+  res.send('welcom')
+})
 
 const postLesson= require('./routes/post-lesson')
 
