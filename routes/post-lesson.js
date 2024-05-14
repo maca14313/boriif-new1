@@ -12,10 +12,10 @@ const fs= require('fs');
 
 
 const db=mysql.createConnection({
-    host:"sql11.freemysqlhosting.net",
-    user:"sql11678624",
-    password:"sJh4GPp6h1",
-    database:"sql11678624",
+    host:"sql7.freemysqlhosting.net",
+    user:"sql7706449",
+    password:"gQAzPjTzQ8",
+    database:"sql7706449",
    
   }) 
 /*
@@ -271,6 +271,69 @@ router.post('/registermember',async(req,res)=>{
   })
 
   /******************************************************************************************************* */
+  router.post('/setmonthlyfee',async(req,res)=>{
+    const q="INSERT INTO All_info (`monthly_payment`) VALUES (?)"
+    const v=[req.body.monthly_fee];
+    db.query(`SELECT * FROM All_info`,(err,result)=>{
+           /* const existPhoneNumber=result?.map((re)=>{
+        return re.phone_number
+   }) */
+     console.log(result=='')
+      if(result==''){
+      db.query(q,[v],(error,data)=>{
+          if(data){
+
+           res.json('success')
+          }else{
+            res.json('err')
+                    }
+        
+        })
+       }else{
+
+        db.query(`UPDATE All_info SET monthly_payment=?`,[req.body.monthly_fee],(err2,data2)=>{
+    if (data2) {
+      res.json('success')
+  
+    } else {
+      res.json('err2')
+    }
+        })
+
+       } 
+
+       
+     
+    })
+    
+  })
+
+
+
+  router.get('/getmonthlyfee',async(req,res)=>{
+  
+    db.query(`SELECT * FROM All_info`,(err,result)=>{
+           /* const existPhoneNumber=result?.map((re)=>{
+        return re.phone_number
+   }) */
+      if(result){
+        console.log(result)
+        res.json(result)
+
+       }else{
+        console.log(err)
+        res.json(err)
+
+
+
+       } 
+
+       
+     
+    })
+    
+  })
+    /******************************************************************************************************* */
      
   router.get('/listofmembers',async(req,res)=>{
 

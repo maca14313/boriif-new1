@@ -22,19 +22,17 @@ const db=mysql.createConnection({
     host:"localhost",
     user:"root",
     password:"0925090339",
-    database:"test_try",
+    database:"boriif",
     charset : 'utf8mb4',
   }) */
+  
   const db=mysql.createConnection({
-    host:"sql11.freemysqlhosting.net",
-    user:"sql11665997",
-    password:"DryhiQVTsY",
-    database:"sql11665997",
-    /*connectionLimit: 50,
-      queueLimit: 0,
-      waitForConnection: true*/
-    //charset : 'utf8mb4_unicode_ci',
-  })
+    host:"sql7.freemysqlhosting.net",
+    user:"sql7706449",
+    password:"gQAzPjTzQ8",
+    database:"sql7706449",
+    
+  }) 
   
   app.use("/images", express.static(path.join(__dirname, "public/images")));
 
@@ -48,7 +46,7 @@ db._protocol._delegateError = function(err, sequence){
 };
 
 app.get("/",(req,res)=>{
-  res.send('welcom')
+  res.send('welcom from boriif server')
 })
 
 const postLesson= require('./routes/post-lesson')
